@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="StudentLayout.master.cs" Inherits="HostelHub.StudentLayout" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - HostelHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" runat="server" />
+    <link href="~/Content/Site.css" rel="stylesheet" runat="server" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="app-shell">
+
+            <aside class="sidebar">
+                <div class="brand">HostelHub</div>
+
+                <a class="menu-item" href="~/Student/Dashboard.aspx" runat="server"><i class="bi bi-grid"></i> Dashboard</a>
+                <a class="menu-item" href="~/Student/Profile.aspx" runat="server"><i class="bi bi-people"></i> Profile</a>
+                <a class="menu-item" href="~/Student/MyRoom.aspx" runat="server"><i class="bi bi-door-open"></i> Rooms</a>
+                <a class="menu-item" href="~/Student/MyComplaints.aspx" runat="server"><i class="bi bi-exclamation-triangle"></i> Complaints</a>
+                <a class="menu-item" href="~/Student/MessFeedback.aspx" runat="server"><i class="bi bi-star"></i> Mess Feedback</a>
+                <a class="menu-item" href="~/Student/MessMenu.aspx" runat="server"><i class="bi bi-cup-hot"></i> Mess Menu</a>
+                <a class="menu-item" href="~/Student/Notices.aspx" runat="server"><i class="bi bi-megaphone"></i> Notices</a>
+
+                <a class="menu-item logout" href="~/Account/Logout.aspx" runat="server"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            </aside>
+
+            <div class="app-main">
+                <header class="topbar">
+                    <div class="search-box"><i class="bi bi-search"></i><input type="text" placeholder="Search..." /></div>
+                    <div class="topbar-right">
+                        <i class="bi bi-bell"></i>
+                        <div class="profile-mini">
+                            <div class="avatar">S</div>
+                            <div>Student</div>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="page-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </main>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,322 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HostelHub.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        <%: Page.Title %> - HostelHub
+    </title>
+
+    <link href="~/Content/Site.css"
+        rel="stylesheet"
+        runat="server" />
+
+    <asp:ContentPlaceHolder
+        ID="HeadContent"
+        runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+
+<form id="form1" runat="server">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="top-header">
+
+        <div class="logo-area">
+
+            <div class="logo-icon">
+                🏠
+            </div>
+
+            <div>
+                <div class="logo-text">
+                    HostelHub
+                </div>
+
+                <div class="logo-subtitle">
+                    Hostel Management System
+                </div>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <a href="#" class="notification">
+                🔔
+            </a>
+
+            <div class="profile-mini">
+
+                <div class="profile-avatar">
+                    R
+                </div>
+
+                <div class="profile-info">
+                    <strong>Rahul Sharma</strong>
+                    <span>Student</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN LAYOUT ================= -->
+
+    <div class="main-layout">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-menu">
+
+                <div class="menu-title">
+                    MAIN MENU
+                </div>
+
+
+                <a href="~/Public/Default.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">🏠</span>
+
+                    <span>Home</span>
+
+                </a>
+
+
+                <a href="~/Student/Dashboard.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">📊</span>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <a href="~/Student/MyRoom.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">🛏️</span>
+
+                    <span>My Room</span>
+
+                </a>
+
+
+                <a href="~/Student/MyComplaints.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">📝</span>
+
+                    <span>My Complaints</span>
+
+                </a>
+
+
+                <a href="~/Student/Notices.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">📢</span>
+
+                    <span>Notices</span>
+
+                </a>
+
+
+                <a href="~/Student/MessMenu.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">🍽️</span>
+
+                    <span>Mess Menu</span>
+
+                </a>
+
+
+                <a href="~/Student/MessFeedback.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">⭐</span>
+
+                    <span>Mess Feedback</span>
+
+                </a>
+
+
+                <a href="~/Student/Profile.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">👤</span>
+
+                    <span>Profile</span>
+
+                </a>
+
+
+                <div class="menu-title admin-title">
+                    ADMIN
+                </div>
+
+
+                <a href="~/Admin/Dashboard.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">📈</span>
+
+                    <span>Admin Dashboard</span>
+
+                </a>
+
+
+                <a href="~/Admin/StudentManagement.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">👨‍🎓</span>
+
+                    <span>Students</span>
+
+                </a>
+
+
+                <a href="~/Admin/RoomManagement.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">🚪</span>
+
+                    <span>Rooms</span>
+
+                </a>
+
+
+                <a href="~/Admin/ComplaintManagement.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">📋</span>
+
+                    <span>Complaints</span>
+
+                </a>
+
+
+                <a href="~/Admin/MessManagement.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">🍴</span>
+
+                    <span>Mess Management</span>
+
+                </a>
+
+
+                <a href="~/Admin/NoticesManagement.aspx"
+                   runat="server"
+                   class="menu-item">
+
+                    <span class="menu-icon">📣</span>
+
+                    <span>Notices</span>
+
+                </a>
+
+
+                <div class="sidebar-bottom">
+
+                    <a href="~/Public/About.aspx"
+                       runat="server"
+                       class="menu-item">
+
+                        <span class="menu-icon">ℹ️</span>
+
+                        <span>About Us</span>
+
+                    </a>
+
+
+                    <a href="~/Public/Contact.aspx"
+                       runat="server"
+                       class="menu-item">
+
+                        <span class="menu-icon">📞</span>
+
+                        <span>Contact Us</span>
+
+                    </a>
+
+
+                    <a href="~/Account/Logout.aspx"
+                       runat="server"
+                       class="menu-item logout">
+
+                        <span class="menu-icon">🚪</span>
+
+                        <span>Logout</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <main class="page-content">
+
+            <asp:ContentPlaceHolder
+                ID="MainContent"
+                runat="server">
+            </asp:ContentPlaceHolder>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © <%: DateTime.Now.Year %> HostelHub.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</form>
+
+</body>
+</html>
