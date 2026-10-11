@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Text.RegularExpressions;
 using HostelHub.Helpers;
 
 namespace HostelHub.Public
@@ -11,26 +10,13 @@ namespace HostelHub.Public
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            // Required aur format ka check validators karte hain
+            if (!Page.IsValid) return;
+
             string name = txtName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string subject = txtSubject.Text.Trim();
             string message = txtMessage.Text.Trim();
-
-            if (name == "" || email == "" || subject == "" || message == "")
-            {
-                Show("Please fill all fields.", true);
-                return;
-            }
-            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                Show("Please enter a valid email address.", true);
-                return;
-            }
-            if (message.Length > 2000)
-            {
-                Show("Message is too long (maximum 2000 characters).", true);
-                return;
-            }
 
             try
             {

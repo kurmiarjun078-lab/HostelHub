@@ -15,13 +15,13 @@ namespace HostelHub.Account
     {
 
         /// <summary>
-        /// lblMessage control.
+        /// vsSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsSummary;
 
         /// <summary>
         /// txtFullName control.
@@ -69,6 +69,15 @@ namespace HostelHub.Account
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
+        /// cvPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvPassword;
+
+        /// <summary>
         /// txtConfirm control.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,24 @@ namespace HostelHub.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRoom;
+
+        /// <summary>
+        /// cvDuplicate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvDuplicate;
+
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
         /// btnRegister control.

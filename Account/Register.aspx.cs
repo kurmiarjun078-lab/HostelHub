@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Web.UI.WebControls;
 using HostelHub.Helpers;
 
 namespace HostelHub.Account
@@ -9,36 +10,24 @@ namespace HostelHub.Account
     {
         protected void Page_Load(object sender, EventArgs e) { }
 
+        // CustomValidator ka server-side check (client-side bypass ho jaye tab bhi)
+        protected void cvPassword_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string v = args.Value ?? "";
+            args.IsValid = v.Length >= 8
+                           && Regex.IsMatch(v, "[A-Za-z]")
+                           && Regex.IsMatch(v, "[0-9]");
+        }
+
         protected void btnRegister_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) return;
+
             string fullName = txtFullName.Text.Trim();
             string enrollment = txtEnrollment.Text.Trim();
             string email = txtEmail.Text.Trim().ToLower();
             string phone = txtPhone.Text.Trim();
             string password = txtPassword.Text;
-            string confirm = txtConfirm.Text;
-
-            if (fullName == "" || enrollment == "" || email == "" || phone == "" ||
-                ddlCourse.SelectedValue == "" || ddlDepartment.SelectedValue == "")
-            {
-                ShowError("Please fill all required fields.");
-                return;
-            }
-            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                ShowError("Please enter a valid email address.");
-                return;
-            }
-            if (password.Length < 8)
-            {
-                ShowError("Password must be at least 8 characters.");
-                return;
-            }
-            if (password != confirm)
-            {
-                ShowError("Password and Confirm Password do not match.");
-                return;
-            }
 
             try
             {
@@ -47,7 +36,6 @@ namespace HostelHub.Account
                     con.Open();
                     using (SqlTransaction tx = con.BeginTransaction())
                     {
-                        // Duplicate check
                         using (var chk = new SqlCommand(
                             "SELECT COUNT(*) FROM Users WHERE Email=@Email OR EnrollmentNo=@Enr", con, tx))
                         {
@@ -55,7 +43,7 @@ namespace HostelHub.Account
                             chk.Parameters.AddWithValue("@Enr", enrollment);
                             if ((int)chk.ExecuteScalar() > 0)
                             {
-                                ShowError("An account with this email or enrollment number already exists.");
+                                cvDuplicate.IsValid = false;   // summary mein error dikhega
                                 return;
                             }
                         }
@@ -99,15 +87,10 @@ namespace HostelHub.Account
             }
             catch (Exception ex)
             {
-                // Abhi debugging ke liye asli error dikha rahe hain, baad mein hata denge
-                ShowError("Registration failed: " + ex.Message);
+                // Abhi debugging ke liye, baad mein hata denge
+                lblMessage.CssClass = "msg error";
+                lblMessage.Text = "Registration failed: " + ex.Message;
             }
-        }
-
-        private void ShowError(string message)
-        {
-            lblMessage.CssClass = "msg error";
-            lblMessage.Text = message;
         }
     }
 }

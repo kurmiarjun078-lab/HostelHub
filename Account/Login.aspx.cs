@@ -17,14 +17,11 @@ namespace HostelHub.Account
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            // Khali fields ka check validators karte hain
+            if (!Page.IsValid) return;
+
             string id = txtUser.Text.Trim();
             string password = txtPassword.Text;
-
-            if (id == "" || password == "")
-            {
-                ShowError("Please enter your email/enrollment number and password.");
-                return;
-            }
 
             try
             {
@@ -36,7 +33,7 @@ namespace HostelHub.Account
                           FROM Users
                           WHERE Email = @Id OR EnrollmentNo = @Id", con))
                     {
-                        cmd.Parameters.AddWithValue("@Id", id.ToLower() == id ? id : id);
+                        cmd.Parameters.AddWithValue("@Id", id);
 
                         using (SqlDataReader r = cmd.ExecuteReader())
                         {
