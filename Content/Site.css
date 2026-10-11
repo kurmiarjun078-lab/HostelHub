@@ -590,3 +590,25 @@ a {
     border: 1px solid var(--hh-border);
     display: block;
 }
+
+.msg {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+    .msg:empty {
+        display: none;
+    }
+
+    .msg.error {
+        background: #FEE2E2;
+        color: #B91C1C;
+    }
+
+    .msg.success {
+        background: #DCFCE7;
+        color: #15803D;
+    }

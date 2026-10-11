@@ -20,8 +20,11 @@
                 <a href="~/Account/ForgotPassword.aspx" runat="server">Forgot Password?</a>
             </div>
 
-            <asp:Button ID="btnLogin" runat="server" Text="Login →" CssClass="btn-hh-dark btn-block" />
+            <asp:Label ID="lblMessage" runat="server" EnableViewState="false"></asp:Label>
 
+            <div style="margin-top:20px">
+                <asp:Button ID="btnLogin" runat="server" Text="Login →" CssClass="btn-hh-dark btn-block" OnClick="btnLogin_Click" />
+            </div>
             <p class="auth-foot">Don't have an account? <a href="~/Account/Register.aspx" runat="server">Register</a></p>
         </div>
     </div>

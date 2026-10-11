@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Register" MasterPageFile="~/PublicLayout.master" Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="HostelHub.Account.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Label ID="lblMessage" runat="server" EnableViewState="false"></asp:Label>
     <div class="auth-wrap">
         <div class="auth-card wide">
             <h2>Create Account</h2>
@@ -75,9 +76,10 @@
                 </div>
             </div>
 
-            <div style="margin-top:28px">
-                <asp:Button ID="btnRegister" runat="server" Text="CREATE ACCOUNT →" CssClass="btn-hh-dark btn-block" />
-            </div>
+           <div style="margin-top:20px">
+                 <asp:Button ID="btnRegister" runat="server" Text="CREATE ACCOUNT →"
+                CssClass="btn-hh-dark btn-block" OnClick="btnRegister_Click" />
+           </div>
 
             <p class="auth-foot">Already have an account? <a href="~/Account/Login.aspx" runat="server">Log in here</a></p>
         </div>

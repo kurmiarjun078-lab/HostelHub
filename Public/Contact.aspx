@@ -26,9 +26,12 @@
                             <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="6" CssClass="form-control-hh" placeholder="Enter your detailed message here..."></asp:TextBox>
                         </div>
                     </div>
+                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false"></asp:Label>
+
                     <div class="text-end mt-3">
-                        <asp:Button ID="btnSend" runat="server" Text="Send Message" CssClass="btn-hh-primary" />
+                           <asp:Button ID="btnSend" runat="server" Text="Send Message" CssClass="btn-hh-primary" OnClick="btnSend_Click" />
                     </div>
+
                 </div>
             </div>
 
