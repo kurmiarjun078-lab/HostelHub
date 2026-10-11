@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminLayout.master.cs" Inherits="HostelHub.AdminLayout" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - HostelHub Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" runat="server" />
+    <link href="~/Content/Site.css" rel="stylesheet" runat="server" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="app-shell">
+
+            <aside class="sidebar">
+                <div class="brand">HostelHub</div>
+
+                <a class="menu-item" data-page="Dashboard" href="~/Admin/Dashboard.aspx" runat="server"><i class="bi bi-grid"></i> Dashboard</a>
+                <a class="menu-item" data-page="StudentManagement" href="~/Admin/StudentManagement.aspx" runat="server"><i class="bi bi-people"></i> Students Management</a>
+                <a class="menu-item" data-page="RoomManagement" href="~/Admin/RoomManagement.aspx" runat="server"><i class="bi bi-door-open"></i> Rooms Management</a>
+                <a class="menu-item" data-page="ComplaintManagement" href="~/Admin/ComplaintManagement.aspx" runat="server"><i class="bi bi-exclamation-triangle"></i> Complaints Management</a>
+                <a class="menu-item" data-page="MessManagement" href="~/Admin/MessManagement.aspx" runat="server"><i class="bi bi-cup-hot"></i> Mess Management</a>
+                <a class="menu-item" data-page="NoticesManagement" href="~/Admin/NoticesManagement.aspx" runat="server"><i class="bi bi-megaphone"></i> Notices &amp; Announcements</a>
+
+                <a class="menu-item logout" href="~/Account/Logout.aspx" runat="server"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            </aside>
+
+            <div class="app-main">
+                <header class="topbar">
+                    <div class="search-box"><i class="bi bi-search"></i><input type="text" placeholder="Search..." /></div>
+                    <div class="topbar-right">
+                        <i class="bi bi-bell"></i>
+                        <div class="profile-mini">
+                            <div><%: Session["FullName"] ?? "Admin User" %><small>Hostel Manager</small></div>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="page-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </main>
+            </div>
+
+        </div>
+    </form>
+
+    <script>
+        // Current page ka sidebar link highlight karo
+        (function () {
+            var path = location.pathname.toLowerCase();
+            document.querySelectorAll('.sidebar a[data-page]').forEach(function (a) {
+                if (path.indexOf(a.getAttribute('data-page').toLowerCase()) !== -1) a.classList.add('active');
+            });
+        })();
+    </script>
+</body>
+</html>

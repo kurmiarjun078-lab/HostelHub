@@ -132,6 +132,7 @@
     </div>
 
     <script>
+        // @ts-nocheck
         // CustomValidator ka client-side function (browser mein turant check)
         function validatePassword(sender, args) {
             var v = args.Value;
