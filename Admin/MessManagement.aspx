@@ -151,20 +151,8 @@
         <div class="menu-toolbar">
             <h5><i class="bi bi-table"></i> Weekly Menu Management</h5>
             <div class="d-flex flex-wrap gap-2">
-                
                 <asp:Button ID="btnAddMenu" runat="server" Text="+ Add Menu"
-                    CssClass="btn btn-dark" OnClick="btnAddMenu_Click" />
-            </div>
-        </div>
-
-        <div class="menu-toolbar" style="border-top:1px solid #e4e7ec;">
-            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"
-                placeholder="Search day or menu item..." Style="max-width:360px;" />
-            <div class="d-flex flex-wrap gap-2">
-                <asp:Button ID="btnSearch" runat="server" Text="Search"
-                    CssClass="btn btn-primary" OnClick="btnSearch_Click" />
-                <asp:Button ID="btnReset" runat="server" Text="Reset"
-                    CssClass="btn btn-outline-secondary" OnClick="btnReset_Click" />
+                    CssClass="btn btn-dark" CausesValidation="false" OnClick="btnAddMenu_Click" />
             </div>
         </div>
 

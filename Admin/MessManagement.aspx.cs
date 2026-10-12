@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -162,19 +160,7 @@ namespace HostelHub.Admin
 
         private void BindMenu()
         {
-            IEnumerable<MessMenuRecord> query = Menus;
-            string search = (txtSearch.Text ?? "").Trim();
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                query = query.Where(m =>
-                    ContainsText(m.Day, search) ||
-                    ContainsText(m.Breakfast, search) ||
-                    ContainsText(m.Lunch, search) ||
-                    ContainsText(m.Dinner, search));
-            }
-
-            List<MessMenuRecord> results = query
+            List<MessMenuRecord> results = Menus
                 .OrderBy(m => Array.IndexOf(Days, m.Day))
                 .ToList();
 
@@ -231,12 +217,6 @@ namespace HostelHub.Admin
 
             return new string('★', rating) +
                    new string('☆', 5 - rating);
-        }
-
-        private bool ContainsText(string source, string search)
-        {
-            return !string.IsNullOrEmpty(source) &&
-                source.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
         protected void btnAddMenu_Click(object sender, EventArgs e)
@@ -383,70 +363,6 @@ namespace HostelHub.Admin
                 ShowMessage("Menu for " + day + " deleted successfully.", true);
                 BindAll();
             }
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            BindMenu();
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            txtSearch.Text = "";
-            lblMessage.Text = "";
-            BindAll();
-        }
-
-        protected void btnExportCsv_Click(object sender, EventArgs e)
-        {
-            IEnumerable<MessMenuRecord> query = Menus;
-            string search = (txtSearch.Text ?? "").Trim();
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                query = query.Where(m =>
-                    ContainsText(m.Day, search) ||
-                    ContainsText(m.Breakfast, search) ||
-                    ContainsText(m.Lunch, search) ||
-                    ContainsText(m.Dinner, search));
-            }
-
-            List<MessMenuRecord> records = query
-                .OrderBy(m => Array.IndexOf(Days, m.Day))
-                .ToList();
-
-            StringBuilder csv = new StringBuilder();
-            csv.AppendLine("Day,Breakfast,Lunch,Dinner");
-
-            foreach (MessMenuRecord menu in records)
-            {
-                csv.Append(CsvField(menu.Day)).Append(",");
-                csv.Append(CsvField(menu.Breakfast)).Append(",");
-                csv.Append(CsvField(menu.Lunch)).Append(",");
-                csv.AppendLine(CsvField(menu.Dinner));
-            }
-
-            Response.Clear();
-            Response.Buffer = true;
-            Response.ContentType = "text/csv";
-            Response.ContentEncoding = Encoding.UTF8;
-            Response.AddHeader(
-                "Content-Disposition",
-                "attachment;filename=WeeklyMessMenu.csv");
-
-            Response.BinaryWrite(Encoding.UTF8.GetPreamble());
-            Response.Write(csv.ToString());
-            Response.Flush();
-
-            HttpContext.Current.ApplicationInstance.CompleteRequest();
-        }
-
-        private string CsvField(string value)
-        {
-            if (value == null)
-                value = "";
-
-            return "\"" + value.Replace("\"", "\"\"") + "\"";
         }
 
         private void ClearForm()
